@@ -76,11 +76,10 @@ CheckWin PROC
     CHECK3 MACRO i, j, k, lblNext
         mov al, board[i]
         cmp al, 'X'        ; Is AL == 'X' ?
-        je yesx              ; yes -> skip the next test and continue
+        je @F              ; yes -> skip the next test and continue
         cmp al, 'O'        ; otherwise, is AL == 'O' ?
-        jne lblNext       
-        yesx:     
-        cmp al, board[j]
+        jne lblNext            
+@@:     cmp al, board[j]
         jne lblNext        ; no -> not all three equal; go try next line
         cmp al, board[k]
         jne lblNext        ; no -> not all three equal; go try next line
